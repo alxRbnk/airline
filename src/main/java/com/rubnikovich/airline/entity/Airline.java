@@ -7,7 +7,7 @@ import java.time.LocalTime;
 public class Airline implements Comparable<Airline> {
 
     private String destination;
-    private String flightId;
+    private String idFlight;
     private String typeAirplane;
     private LocalTime timeDeparture;
     private DayOfWeek day;
@@ -17,7 +17,7 @@ public class Airline implements Comparable<Airline> {
 
     public Airline(String destination, String flightId, String typeAirplane, LocalTime timeDeparture, DayOfWeek day) {
         this.destination = destination;
-        this.flightId = flightId;
+        this.idFlight = flightId;
         this.typeAirplane = typeAirplane;
         this.timeDeparture = timeDeparture;
         this.day = day;
@@ -32,11 +32,11 @@ public class Airline implements Comparable<Airline> {
     }
 
     public String getFlightId() {
-        return flightId;
+        return idFlight;
     }
 
     public void setFlightId(String flightId) {
-        this.flightId = flightId;
+        this.idFlight = flightId;
     }
 
     public String getTypeAirplane() {
@@ -67,7 +67,7 @@ public class Airline implements Comparable<Airline> {
     public String toString() {
         final StringBuilder sb = new StringBuilder("Airline { ");
         sb.append("[destination - ").append(destination).append(']');
-        sb.append(" [flightId - ").append(flightId).append(']');
+        sb.append(" [flightId - ").append(idFlight).append(']');
         sb.append(" [typeAirplane - ").append(typeAirplane).append(']');
         sb.append(" [timeDeparture - ").append(timeDeparture).append(']');
         sb.append(" [day - ").append(day).append(']');
