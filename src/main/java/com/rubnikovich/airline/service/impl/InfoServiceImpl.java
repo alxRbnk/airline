@@ -5,7 +5,9 @@ import com.rubnikovich.airline.service.InfoService;
 
 import java.time.DayOfWeek;
 import java.time.LocalTime;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 public class InfoServiceImpl implements InfoService {
 

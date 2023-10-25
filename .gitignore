@@ -4,6 +4,7 @@ target/
 !**/src/test/**/target/
 
 ### IntelliJ IDEA ###
+logs/
 .idea/
 .idea/modules.xml
 .idea/jarRepositories.xml
@@ -38,3 +39,4 @@ build/
 ### Mac OS ###
 .DS_Store
 /src/main/resources/task.txt
+
