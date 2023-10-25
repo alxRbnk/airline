@@ -1,28 +1,28 @@
 package com.rubnikovich.airline.main;
 
+import com.rubnikovich.airline.creator.Creator;
 import com.rubnikovich.airline.entity.Airline;
 import com.rubnikovich.airline.reader.AirReader;
+import com.rubnikovich.airline.service.InfoService;
+import com.rubnikovich.airline.service.impl.InfoServiceImpl;
 
-import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
-    public static void main(String[] args) throws Exception { //fixme
-        AirReader airReader = new AirReader();
-        List<String> list = airReader.readFile();
-        List<Airline> listAirline = new ArrayList<>();
+    public static void main(String[] args) throws Exception {
 
-        for (int i = 2; i < list.size(); i++) {
-            String[] arr = list.get(i).split("\\s+");
-            Airline airline = new Airline();
-            airline.setFlightId(arr[1]);
-            airline.setDestination(arr[2]);
-            airline.setTypeAirplane(arr[3]);
-//            airline.setTimeDeparture(arr[4]); //fixme
-//            airline.setDay(arr[5]); //fixme
-            listAirline.add(airline);
-        }
-        for (Airline s : listAirline) {
+        AirReader fileInfo = new AirReader();
+        List<String> listStringFile = fileInfo.readFile("src/main/resources/doc.txt");
+
+        Creator createAirlines = new Creator();
+        List<Airline> airlines = createAirlines.createAirlines(listStringFile);
+
+        InfoService info = new InfoServiceImpl();
+        List<Airline> listFlightsDestination = info.listFlightsDestination(airlines, "London");
+        List<Airline> listFlightsGivenDay = info.listFlightsGivenDay(airlines, "Friday");
+
+        List<Airline> listFlightsGivenDayAfterTime = info.listFlightsGivenDayAfterTime(airlines, "Friday", 00, 00);
+        for (Airline s : listFlightsGivenDayAfterTime) {
             System.out.println(s);
         }
     }

@@ -1,18 +1,21 @@
 package com.rubnikovich.airline.entity;
 
-import java.sql.Time;
 
-public class Airline {
+import java.time.DayOfWeek;
+import java.time.LocalTime;
+
+public class Airline implements Comparable<Airline> {
+
     private String destination;
     private String flightId;
     private String typeAirplane;
-    private Time timeDeparture;
-    private DaysWeek day;
+    private LocalTime timeDeparture;
+    private DayOfWeek day;
 
     public Airline() {
     }
 
-    public Airline(String destination, String flightId, String typeAirplane, Time timeDeparture, DaysWeek day) {
+    public Airline(String destination, String flightId, String typeAirplane, LocalTime timeDeparture, DayOfWeek day) {
         this.destination = destination;
         this.flightId = flightId;
         this.typeAirplane = typeAirplane;
@@ -44,32 +47,43 @@ public class Airline {
         this.typeAirplane = typeAirplane;
     }
 
-    public Time getTimeDeparture() {
+    public LocalTime getTimeDeparture() {
         return timeDeparture;
     }
 
-    public void setTimeDeparture(Time timeDeparture) {
+    public void setTimeDeparture(LocalTime timeDeparture) {
         this.timeDeparture = timeDeparture;
     }
 
-    public DaysWeek getDay() {
+    public DayOfWeek getDay() {
         return day;
     }
 
-    public void setDay(DaysWeek day) {
+    public void setDay(DayOfWeek day) {
         this.day = day;
     }
 
     @Override
     public String toString() {
-        final StringBuilder sb = new StringBuilder("Airline{");
-        sb.append("destination='").append(destination).append('\'');
-        sb.append(", flightId='").append(flightId).append('\'');
-        sb.append(", typeAirplane='").append(typeAirplane).append('\'');
-        sb.append(", timeDeparture=").append(timeDeparture);
-        sb.append(", day=").append(day);
-        sb.append('}');
+        final StringBuilder sb = new StringBuilder("Airline { ");
+        sb.append("[destination - ").append(destination).append(']');
+        sb.append(" [flightId - ").append(flightId).append(']');
+        sb.append(" [typeAirplane - ").append(typeAirplane).append(']');
+        sb.append(" [timeDeparture - ").append(timeDeparture).append(']');
+        sb.append(" [day - ").append(day).append(']');
+        sb.append(" }");
         return sb.toString();
+    }
+
+    @Override
+    public int compareTo(Airline o) {
+        if (this.getTimeDeparture().isAfter(o.getTimeDeparture())) {
+            return 1;
+        } else if (this.getTimeDeparture().isBefore(o.getTimeDeparture())) {
+            return -1;
+        } else {
+            return 0;
+        }
     }
 }
 

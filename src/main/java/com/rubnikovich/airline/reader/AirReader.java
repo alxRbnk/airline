@@ -7,13 +7,10 @@ import java.nio.file.Paths;
 import java.util.List;
 
 public class AirReader {
-    private String file = "D:\\java\\projects\\Airline\\src\\main\\resources\\doc.txt"; //fixme
-    private Path filePath = Paths.get(file);
-    private List<String> readList;
 
-    public List<String> readFile() throws Exception { //fixme
-        readList = Files.readAllLines(filePath, StandardCharsets.UTF_8);
-        return readList;
+    public List<String> readFile(String path) throws Exception {
+        Path filePath = Paths.get(path);
+        return Files.readAllLines(filePath, StandardCharsets.UTF_8);
     }
 
 
